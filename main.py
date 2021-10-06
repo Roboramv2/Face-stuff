@@ -5,6 +5,7 @@ from functions import *
 width = 640
 height = 480
 detector = cv2.CascadeClassifier("assets/haarcascade_frontalface_default.xml")
+you = ((cv2.imread("assets/you.jpg"))).astype(np.uint8)
 cap = cv2.VideoCapture(0)
 cap.set(3, width)
 cap.set(4, height)
@@ -17,7 +18,7 @@ def preprocessing(img):
         for (fX, fY, fW, fH) in faceRects:
             #faceROI = gray[fY:fY+ fH, fX:fX + fW]
             face = img[fY:fY+ fH, fX:fX + fW, :]
-            img[fY:fY+ fH, fX:fX + fW, :] = blur(face)
+            img[fY:fY+ fH, fX:fX + fW, :] = clown(face, you)
     return img
 
 while True:
